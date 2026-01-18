@@ -1,0 +1,92 @@
+# Default Configuration for Advanced Stereo Vision Pipeline
+
+# Camera Parameters
+camera:
+  # Approximate values - will be replaced by calibration
+  focal_length: 721.5  # pixels
+  baseline: 0.54  # meters
+  principal_point_x: 609.5
+  principal_point_y: 172.8
+
+# CharuCo Calibration
+charuco:
+  squares_x: 7  # Number of squares in X direction
+  squares_y: 5  # Number of squares in Y direction
+  square_length: 0.04  # Square side length in meters
+  marker_length: 0.02  # Marker side length in meters
+  dictionary: "DICT_6X6_250"  # ArUco dictionary
+  min_detections: 15  # Minimum valid board detections required
+
+# SGBM Parameters (optimized for road scenes)
+sgbm:
+  min_disparity: 0
+  num_disparities: 160  # Must be divisible by 16
+  block_size: 5
+  P1: 600  # 8 * 3 * block_size^2
+  P2: 2400  # 32 * 3 * block_size^2
+  disp12_max_diff: 1
+  uniqueness_ratio: 10
+  speckle_window_size: 100
+  speckle_range: 32
+  mode: "StereoSGBM_MODE_SGBM_3WAY"
+
+# Left-Right Consistency
+lrc:
+  threshold: 1.0  # pixels
+
+# WLS Filtering
+wls:
+  lambda: 8000.0  # Regularization strength
+  sigma: 1.5  # Color sensitivity
+
+# V-Disparity
+v_disparity:
+  hough_threshold: 50  # Minimum votes for line detection
+  min_line_length: 100  # Minimum line length
+  max_line_gap: 10  # Maximum gap in line
+
+# Ground Plane Detection
+ground_plane:
+  pothole_threshold: 0.02  # meters below plane
+  hump_threshold: 0.02  # meters above plane
+  min_inlier_ratio: 0.7  # Minimum ratio of inliers
+
+# 3D Point Cloud Processing
+point_cloud:
+  min_depth: 0.5  # meters
+  max_depth: 30.0  # meters
+  outlier_k_neighbors: 20  # K for statistical outlier removal
+  outlier_std_ratio: 2.0  # Standard deviation threshold
+
+# Alpha Shape Meshing
+alpha_shape:
+  alpha: 0.1  # Alpha parameter for concave hull
+  min_points: 100  # Minimum points for meshing
+
+# Volume Calculation
+volume:
+  min_volume_threshold: 1e-6  # cubic meters
+  max_volume_threshold: 1.0  # cubic meters
+  uncertainty_factor: 0.05  # 5% uncertainty estimate
+
+# Image Processing
+preprocessing:
+  clahe_clip_limit: 2.0
+  clahe_tile_grid_size: [8, 8]
+  gaussian_blur_kernel: [5, 5]
+  brightness_normalization: true
+  contrast_enhancement: true
+
+# Output Settings
+output:
+  save_disparity_maps: true
+  save_point_clouds: true
+  save_meshes: true
+  save_visualizations: true
+  output_format: "ply"  # For point clouds and meshes
+
+# Batch Processing
+batch:
+  parallel_processing: true
+  max_workers: 4
+  progress_reporting: true

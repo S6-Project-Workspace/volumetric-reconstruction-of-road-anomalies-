@@ -1,0 +1,23 @@
+============================================================
+STEREO CALIBRATION QUALITY REPORT
+============================================================
+Status: ✅ VALID
+Quality Score: 100.0/100
+
+📷 CAMERA PARAMETERS
+------------------------------
+Left focal length:  721.5 x 721.5 pixels
+Right focal length: 721.5 x 721.5 pixels
+Left reprojection error:  0.0800 pixels
+Right reprojection error: 0.0900 pixels
+
+📐 STEREO GEOMETRY
+------------------------------
+Baseline: 0.5400 meters
+Camera rotation: 0.00 degrees
+
+💡 RECOMMENDATIONS
+------------------------------
+  • Excellent calibration quality!
+  • Ready for high-precision measurements
+============================================================

@@ -1,0 +1,585 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Packages
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Title page information
+\title{Advanced Stereo Vision Pipeline for Volumetric Reconstruction of Road Anomalies}
+\subtitle{Sub-millimeter Precision Pothole Detection and Volume Measurement}
+\author{Team Members: [Name 1], [Name 2], [Name 3], [Name 4]}
+\institute{[University Name] \\ [Department Name]}
+\date{\today}
+
+% Custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Code listing style
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Slide 1: Title & Team Credentials
+\begin{frame}{Project Team \& Credentials}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Project Title:}
+\begin{itemize}
+\item Advanced Stereo Vision Pipeline for Volumetric Reconstruction of Road Anomalies
+\item Sub-millimeter Precision Measurement System
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Team Members \& Roles:}
+\begin{itemize}
+\item \textbf{[Name 1]} - Project Lead \& Computer Vision Engineer
+\item \textbf{[Name 2]} - 3D Reconstruction Specialist
+\item \textbf{[Name 3]} - Algorithm Development \& Testing
+\item \textbf{[Name 4]} - System Integration \& Validation
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Supervisor/Guide:} [Professor Name]
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for team photo or project logo
+\includegraphics[width=\textwidth]{placeholder_team_photo.png}
+\textit{[Team Photo Placeholder]}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 2: Problem Identification
+\begin{frame}{Problem Identification}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Problem Statement:}
+\begin{itemize}
+\item Current pothole detection systems lack metric accuracy
+\item Existing solutions provide only 2D detection without volume measurement
+\item Manual road inspection is time-consuming and subjective
+\item Need for automated, precise volumetric quantification
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Real-world Impact:}
+\begin{itemize}
+\item Road maintenance cost optimization
+\item Accurate material quantity estimation
+\item Improved road safety assessment
+\item Automated infrastructure monitoring
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Current Limitations:}
+\begin{itemize}
+\item Low precision measurements (centimeter-level)
+\item No watertight mesh generation
+\item Limited occlusion robustness
+\item Lack of standardized volume calculation
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for problem illustration
+\includegraphics[width=\textwidth]{placeholder_pothole_problem.png}
+\textit{[Pothole Detection Problem]}
+
+\vspace{0.5cm}
+\includegraphics[width=\textwidth]{placeholder_current_limitations.png}
+\textit{[Current System Limitations]}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 3: Project Objectives
+\begin{frame}{Project Objectives}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Primary Goal:}
+\begin{itemize}
+\item Develop a state-of-the-art stereo vision system achieving sub-millimeter precision for road anomaly volumetric reconstruction
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Key Features to be Developed:}
+\begin{itemize}
+\item CharuCo board-based camera calibration system
+\item Advanced SGBM disparity estimation with post-processing
+\item V-Disparity ground plane detection algorithm
+\item Watertight mesh generation using Alpha Shapes
+\item Precise volume calculation using Divergence Theorem
+\item Property-based testing framework for validation
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Expected Final Outcome:}
+\begin{itemize}
+\item Metric-accurate volume measurements (cubic cm precision)
+\item Robust performance under various lighting conditions
+\item Automated batch processing capabilities
+\item Comprehensive validation and quality metrics
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for system overview
+\includegraphics[width=\textwidth]{placeholder_system_overview.png}
+\textit{[System Overview]}
+
+\vspace{0.5cm}
+\includegraphics[width=\textwidth]{placeholder_precision_target.png}
+\textit{[Precision Target: Sub-mm]}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 4: Proposed Methodology
+\begin{frame}{Proposed Methodology}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{High-level System Architecture:}
+\begin{enumerate}
+\item \textbf{Calibration Module}
+   \begin{itemize}
+   \item CharuCo board detection
+   \item Intrinsic \& stereo calibration
+   \end{itemize}
+\item \textbf{Disparity Estimation}
+   \begin{itemize}
+   \item SGBM computation
+   \item LRC validation
+   \item WLS filtering
+   \end{itemize}
+\item \textbf{3D Reconstruction}
+   \begin{itemize}
+   \item V-Disparity analysis
+   \item Point cloud generation
+   \end{itemize}
+\item \textbf{Volume Analysis}
+   \begin{itemize}
+   \item Alpha Shape meshing
+   \item Watertight closure
+   \item Volume integration
+   \end{itemize}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{center}
+% Placeholder for process flowchart
+\includegraphics[width=\textwidth]{placeholder_flowchart.png}
+\textit{[Process Flowchart]}
+
+\vspace{0.3cm}
+\textbf{Input/Output Specifications:}
+\begin{itemize}
+\item \textbf{Input:} Stereo image pairs
+\item \textbf{Output:} 
+  \begin{itemize}
+  \item Volume measurements (m³, L, cm³)
+  \item 3D meshes (PLY/OBJ format)
+  \item Quality metrics
+  \item Visualization overlays
+  \end{itemize}
+\end{itemize}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 5: Data Strategy
+\begin{frame}{Data Strategy}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Data Sources:}
+\begin{itemize}
+\item Custom stereo camera setup for road imaging
+\item Existing road anomaly datasets (KITTI, Cityscapes)
+\item Synthetic data generation for validation
+\item CharuCo calibration board images
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Identified Classes and Categories:}
+\begin{itemize}
+\item \textbf{Anomaly Types:}
+  \begin{itemize}
+  \item Potholes (depressions)
+  \item Humps (elevations)
+  \item Cracks (linear features)
+  \end{itemize}
+\item \textbf{Surface Types:}
+  \begin{itemize}
+  \item Asphalt roads
+  \item Concrete surfaces
+  \item Mixed materials
+  \end{itemize}
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Data Acquisition Plan:}
+\begin{itemize}
+\item Controlled environment testing
+\item Real-world road data collection
+\item Validation with ground truth measurements
+\item Diverse lighting and weather conditions
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for data samples
+\includegraphics[width=\textwidth]{placeholder_stereo_pair.png}
+\textit{[Stereo Image Pair Sample]}
+
+\vspace{0.3cm}
+\includegraphics[width=\textwidth]{placeholder_charuco_board.png}
+\textit{[CharuCo Calibration Board]}
+
+\vspace{0.3cm}
+\includegraphics[width=\textwidth]{placeholder_data_categories.png}
+\textit{[Anomaly Categories]}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 6: Technical Requirements
+\begin{frame}{Technical Requirements}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Programming Languages \& Frameworks:}
+\begin{itemize}
+\item \textbf{Python 3.8+} - Primary development language
+\item \textbf{OpenCV 4.5+} - Computer vision operations
+\item \textbf{NumPy/SciPy} - Numerical computations
+\item \textbf{Open3D} - 3D data processing
+\item \textbf{Trimesh} - Mesh operations and validation
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Necessary Libraries \& APIs:}
+\begin{itemize}
+\item \textbf{Testing:} pytest, hypothesis (property-based testing)
+\item \textbf{Visualization:} matplotlib, plotly
+\item \textbf{Scientific:} scikit-learn, scipy.spatial
+\item \textbf{Configuration:} YAML, JSON parsers
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Hardware \& Computing Resources:}
+\begin{itemize}
+\item Stereo camera setup (baseline: 50-100cm)
+\item GPU acceleration (CUDA-compatible)
+\item High-resolution displays for visualization
+\item Sufficient storage for image datasets
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for technical stack
+\includegraphics[width=\textwidth]{placeholder_tech_stack.png}
+\textit{[Technology Stack]}
+
+\vspace{0.3cm}
+\includegraphics[width=\textwidth]{placeholder_hardware_setup.png}
+\textit{[Hardware Setup]}
+
+\vspace{0.3cm}
+\textbf{Development Environment:}
+\begin{itemize}
+\item Git version control
+\item Continuous integration
+\item Automated testing
+\item Documentation generation
+\end{itemize}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 7: Literature Study
+\begin{frame}{Literature Study}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Reference Papers \& Projects:}
+\begin{itemize}
+\item \textbf{Stereo Vision:} Hirschmuller (2008) - SGBM algorithm
+\item \textbf{Calibration:} Garrido-Jurado et al. (2014) - ArUco markers
+\item \textbf{V-Disparity:} Labayrade et al. (2002) - Ground plane detection
+\item \textbf{Alpha Shapes:} Edelsbrunner \& Mücke (1994) - Mesh generation
+\item \textbf{Volume Calculation:} Zhang \& Chen (2001) - Divergence theorem
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Comparative Analysis:}
+\begin{itemize}
+\item \textbf{Traditional Methods:} Limited to 2D detection
+\item \textbf{LiDAR Systems:} High cost, complex setup
+\item \textbf{Monocular Vision:} Lacks depth accuracy
+\item \textbf{Our Approach:} Cost-effective, metric-accurate
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Justification for Chosen Approach:}
+\begin{itemize}
+\item CharuCo boards provide occlusion robustness
+\item SGBM offers best stereo matching performance
+\item V-Disparity enables automatic ground plane detection
+\item Alpha Shapes create tight-fitting meshes
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for literature comparison
+\includegraphics[width=\textwidth]{placeholder_literature_comparison.png}
+\textit{[Method Comparison]}
+
+\vspace{0.3cm}
+\includegraphics[width=\textwidth]{placeholder_accuracy_comparison.png}
+\textit{[Accuracy Comparison]}
+
+\vspace{0.3cm}
+\textbf{Key Innovations:}
+\begin{itemize}
+\item Sub-millimeter calibration
+\item Watertight mesh generation
+\item Property-based validation
+\item Comprehensive error analysis
+\end{itemize}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 8: Project Roadmap
+\begin{frame}{Project Roadmap}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Phase-wise Development Plan:}
+
+\textbf{Phase 1 (Weeks 1-3): Foundation}
+\begin{itemize}
+\item Project setup and dependencies
+\item CharuCo calibration system
+\item Basic stereo calibration pipeline
+\end{itemize}
+
+\textbf{Phase 2 (Weeks 4-6): Core Processing}
+\begin{itemize}
+\item SGBM disparity estimation
+\item LRC validation and WLS filtering
+\item V-Disparity ground plane detection
+\end{itemize}
+
+\textbf{Phase 3 (Weeks 7-9): 3D Reconstruction}
+\begin{itemize}
+\item Point cloud generation and filtering
+\item Alpha Shape mesh generation
+\item Watertight mesh closure algorithms
+\end{itemize}
+
+\textbf{Phase 4 (Weeks 10-12): Integration \& Validation}
+\begin{itemize}
+\item Volume calculation implementation
+\item Comprehensive testing framework
+\item Performance optimization and validation
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for timeline
+\includegraphics[width=\textwidth]{placeholder_timeline.png}
+\textit{[Project Timeline]}
+
+\vspace{0.3cm}
+\textbf{Task Allocation:}
+\begin{itemize}
+\item \textbf{Member 1:} Calibration \& Setup
+\item \textbf{Member 2:} Disparity Processing
+\item \textbf{Member 3:} 3D Reconstruction
+\item \textbf{Member 4:} Testing \& Integration
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Key Milestones:}
+\begin{itemize}
+\item Week 3: Calibration complete
+\item Week 6: Disparity pipeline ready
+\item Week 9: 3D reconstruction working
+\item Week 12: Full system validation
+\end{itemize}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 9: Conclusion & Q&A
+\begin{frame}{Conclusion \& Discussion}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Summary of Proposed Work:}
+\begin{itemize}
+\item Advanced stereo vision pipeline for road anomaly detection
+\item Sub-millimeter precision volumetric measurements
+\item Comprehensive validation using property-based testing
+\item Modular, extensible system architecture
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Potential Challenges:}
+\begin{itemize}
+\item \textbf{Technical:}
+  \begin{itemize}
+  \item Achieving sub-millimeter calibration accuracy
+  \item Handling textureless road surfaces
+  \item Ensuring watertight mesh generation
+  \end{itemize}
+\item \textbf{Practical:}
+  \begin{itemize}
+  \item Real-world lighting variations
+  \item Camera synchronization issues
+  \item Computational performance optimization
+  \end{itemize}
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Expected Contributions:}
+\begin{itemize}
+\item Open-source stereo vision pipeline
+\item Validated property-based testing framework
+\item Comprehensive performance benchmarks
+\item Real-world deployment guidelines
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder for expected results
+\includegraphics[width=\textwidth]{placeholder_expected_results.png}
+\textit{[Expected Results]}
+
+\vspace{0.5cm}
+\textbf{Questions \& Discussion}
+
+\vspace{0.3cm}
+\includegraphics[width=0.8\textwidth]{placeholder_qr_code.png}
+\textit{[Project Repository QR Code]}
+
+\vspace{0.3cm}
+\textbf{Contact Information:}
+\begin{itemize}
+\item Email: [team.email@university.edu]
+\item GitHub: [repository-link]
+\item Documentation: [docs-link]
+\end{itemize}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Backup slides for detailed technical questions
+\begin{frame}{Backup: Technical Architecture Details}
+\begin{center}
+\textbf{Detailed System Architecture}
+\end{center}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Calibration Module:}
+\begin{itemize}
+\item CharuCoCalibrator class
+\item StereoCalibrator class  
+\item Sub-pixel corner refinement
+\item Quality validation metrics
+\end{itemize}
+
+\textbf{Disparity Module:}
+\begin{itemize}
+\item SGBMEstimator with road-specific tuning
+\item LRCValidator for consistency checking
+\item WLSFilter for sub-pixel refinement
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Reconstruction Module:}
+\begin{itemize}
+\item VDisparityGenerator
+\item GroundPlaneModel
+\item PointCloudGenerator with outlier removal
+\end{itemize}
+
+\textbf{Volume Analysis Module:}
+\begin{itemize}
+\item AlphaShapeGenerator
+\item MeshCapper for watertight closure
+\item VolumeCalculator using Divergence Theorem
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Backup: Property-Based Testing Framework}
+\begin{center}
+\textbf{Comprehensive Validation Strategy}
+\end{center}
+
+\textbf{36 Correctness Properties Covering:}
+\begin{itemize}
+\item CharuCo corner detection robustness (occlusion handling)
+\item Calibration accuracy thresholds (< 0.1 pixel error)
+\item Stereo parameter isolation and consistency
+\item Disparity smoothness and LRC validation
+\item 3D geometric consistency and outlier removal
+\item Mesh watertightness and volume calculation accuracy
+\item Parameter configuration validation
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Testing Framework Features:}
+\begin{itemize}
+\item Hypothesis-based property generation (100+ test cases per property)
+\item Automated test execution and validation
+\item Comprehensive error reporting and analysis
+\item Performance benchmarking and regression testing
+\end{itemize}
+\end{frame}
+
+\end{document}
