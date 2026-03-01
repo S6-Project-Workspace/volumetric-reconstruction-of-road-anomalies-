@@ -1,1 +1,1 @@
-# Test package for Advanced Stereo Vision Pipeline
+"""Test suite for advanced stereo vision pipeline."""
