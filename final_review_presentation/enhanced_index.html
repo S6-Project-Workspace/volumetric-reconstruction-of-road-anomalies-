@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volumetric Reconstruction of Road Anomalies - Final Review</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Top Navigation (appears on hover) -->
+    <nav id="top-nav" class="top-nav">
+        <div class="nav-dots">
+            <span class="nav-dot active" data-slide="0" title="Title"></span>
+            <span class="nav-dot" data-slide="1" title="Problem Identification"></span>
+            <span class="nav-dot" data-slide="2" title="Objectives"></span>
+            <span class="nav-dot" data-slide="3" title="Dataset Overview"></span>
+            <span class="nav-dot" data-slide="4" title="Data Strategy"></span>
+            <span class="nav-dot" data-slide="5" title="Intuition & Approach"></span>
+            <span class="nav-dot" data-slide="6" title="Mathematical Foundation"></span>
+            <span class="nav-dot" data-slide="7" title="Methodology"></span>
+            <span class="nav-dot" data-slide="8" title="Architecture"></span>
+            <span class="nav-dot" data-slide="9" title="Literature Review"></span>
+            <span class="nav-dot" data-slide="10" title="Implementation"></span>
+            <span class="nav-dot" data-slide="11" title="Results - Regular"></span>
+            <span class="nav-dot" data-slide="12" title="Results - Edge Cases"></span>
+            <span class="nav-dot" data-slide="13" title="Performance"></span>
+            <span class="nav-dot" data-slide="14" title="Contributions"></span>
+            <span class="nav-dot" data-slide="15" title="Conclusion"></span>
+        </div>
+    </nav>
+
+    <div id="slides-container">
+        <!-- Slide 1: Title -->
+        <section class="slide active" data-slide="0">
+            <div class="slide-content">
+                <div class="title-slide">
+                    <p class="course-code">Computer Vision [22AIE312] - Final Review</p>
+                    <h1 class="main-title">Advanced Stereo Vision Pipeline for<br>Volumetric Reconstruction of Road Anomalies</h1>
+                    <p class="subtitle">Sub-millimeter Precision Pothole Detection and Volume Measurement</p>
+                    
+                    <div class="team-section">
+                        <h3>Team A15</h3>
+                        <div class="team-grid">
+                            <div class="team-member">Keerthivasan S V<span>Stereo Vision & Disparity</span></div>
+                            <div class="team-member">Krish S<span>3D Reconstruction</span></div>
+                            <div class="team-member">Sriranjana C<span>Core Processing</span></div>
+                            <div class="team-member">Thrishala S N<span>System Integration</span></div>
+                        </div>
+                    </div>
+                    
+                    <p class="supervisor">Supervisor: Sajith Variyar V. V.</p>
+                    <p class="date">March 2026 • Amrita Vishwa Vidhyapeetham</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Slide 2: Problem Identification -->
+        <section class="slide" data-slide="1">
+            <div class="slide-content">
+                <h2 class="slide-title">Problem Identification</h2>
+                <div class="problem-identification">
+                    <div class="problem-statement-box">
+                        <h3>The Challenge</h3>
+                        <p class="large-text">Road infrastructure deterioration costs billions annually, yet current assessment methods lack precision and automation.</p>
+                    </div>
+                    
+                    <div class="problem-grid">
+                        <div class="problem-item">
+                            <div class="problem-icon">📏</div>
+                            <h4>Lack of Metric Accuracy</h4>
+                            <p>Existing systems provide only centimeter-level precision, insufficient for accurate material estimation and cost planning.</p>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon">📐</div>
+                            <h4>2D Detection Limitation</h4>
+                            <p>Current solutions detect potholes in 2D but cannot measure depth or calculate volume, critical for repair planning.</p>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon">👤</div>
+                            <h4>Manual Inspection Bottleneck</h4>
+                            <p>Human-based road surveys are time-consuming, subjective, and cannot scale to monitor large road networks efficiently.</p>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon">💰</div>
+                            <h4>Cost Optimization Gap</h4>
+                            <p>Without accurate volume measurements, material procurement is inefficient, leading to waste or insufficient repairs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="impact-statement">
+                        <h3>Real-world Impact</h3>
+                        <div class="impact-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">$67B</div>
+                                <div class="stat-label">Annual US road damage cost</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">30%</div>
+                                <div class="stat-label">Material waste from inaccurate estimates</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100x</div>
+                                <div class="stat-label">Cost increase if repairs are delayed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Slide 3: Objectives -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">Project Objectives</h2>
+                <div class="objectives-detailed">
+                    <div class="primary-objective">
+                        <h3>Primary Goal</h3>
+                        <p class="goal-text">Develop a stereo vision system achieving <strong>sub-millimeter precision</strong> for volumetric reconstruction of road anomalies with automated processing and validation.</p>
+                    </div>
+                    
+                    <div class="objectives-grid">
+                        <div class="objective-card">
+                            <div class="objective-number">01</div>
+                            <h3>Precision Calibration</h3>
+                            <p>CharuCo board-based stereo calibration achieving sub-pixel reprojection error (&lt;0.5 pixels)</p>
+                            <div class="objective-metric">Target: &lt;0.5mm accuracy</div>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">02</div>
+                            <h3>Robust Disparity</h3>
+                            <p>SGBM stereo matching with LRC validation and WLS filtering for dense, accurate depth maps</p>
+                            <div class="objective-metric">Target: &gt;95% valid pixels</div>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">03</div>
+                            <h3>Ground Plane Detection</h3>
+                            <p>V-Disparity analysis with RANSAC fitting for accurate road surface identification</p>
+                            <div class="objective-metric">Target: &lt;2mm RMSE</div>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">04</div>
+                            <h3>3D Reconstruction</h3>
+                            <p>Point cloud generation with statistical outlier removal and depth filtering</p>
+                            <div class="objective-metric">Target: 50K+ points/frame</div>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">05</div>
+                            <h3>Volume Calculation</h3>
+                            <p>Alpha shape meshing with watertight closure for precise volume measurement</p>
+                            <div class="objective-metric">Target: cm³ precision</div>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">06</div>
+                            <h3>Validation Framework</h3>
+                            <p>Property-based testing ensuring correctness across all pipeline stages</p>
+                            <div class="objective-metric">Target: 100% core coverage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
