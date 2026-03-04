@@ -336,10 +336,11 @@ class PresentationResultsGenerator:
             ("06_anomaly_mask.png", "Anomaly Mask"),
         ]
         
-        # Add anomaly visualizations
-        for i in range(1, 6):
+        # Add anomaly visualizations (limit to first 3 for summary)
+        max_anomalies_in_summary = 3
+        for i in range(1, max_anomalies_in_summary + 1):
             for suffix in ["points", "mesh"]:
-                filename = f"0{7+i}_{suffix}.png" if i == 1 else f"0{7+i}_anomaly_{i}_{suffix}.png"
+                filename = f"07_anomaly_{i}_{suffix}.png"
                 if (example_dir / filename).exists():
                     image_files.append((filename, f"Anomaly {i} {suffix.title()}"))
         
@@ -379,10 +380,13 @@ class PresentationResultsGenerator:
                 results_text += f"Anomalies: {results['num_anomalies']}\n\n"
             if 'anomalies' in results:
                 for i, anom in enumerate(results['anomalies'], 1):
-                    results_text += f"Anomaly {i} ({anom['type']}):\n"
-                    results_text += f"  Volume: {anom['volume_cm3']:.2f} cm³\n"
-                    results_text += f"          {anom['volume_liters']:.4f} L\n"
-                    results_text += f"  Area: {anom['area_m2']:.4f} m²\n\n"
+                    results_text += f"Anomaly {i} ({anom.get('type', 'unknown')}):\n"
+                    vol_cm3 = float(anom.get('volume_cm3', 0)) if anom.get('volume_cm3') else 0
+                    vol_l = float(anom.get('volume_liters', 0)) if anom.get('volume_liters') else 0
+                    area = float(anom.get('area_m2', 0)) if anom.get('area_m2') else 0
+                    results_text += f"  Volume: {vol_cm3:.2f} cm³\n"
+                    results_text += f"          {vol_l:.4f} L\n"
+                    results_text += f"  Area: {area:.4f} m²\n\n"
             if 'point_cloud' in results:
                 results_text += f"Points: {results['point_cloud']['num_points']:,}\n"
             

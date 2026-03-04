@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/generate_final_results_simple.py", line 79, in process_with_pipeline
+    from pothole_volume_pipeline import process_stereo_pair
+ImportError: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+Traceback (most recent call last):
+  File "/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/generate_final_results_simple.py", line 79, in process_with_pipeline
+    from pothole_volume_pipeline import process_stereo_pair
+ImportError: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+Traceback (most recent call last):
+  File "/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/generate_final_results_simple.py", line 79, in process_with_pipeline
+    from pothole_volume_pipeline import process_stereo_pair
+ImportError: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+Traceback (most recent call last):
+  File "/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/generate_final_results_simple.py", line 79, in process_with_pipeline
+    from pothole_volume_pipeline import process_stereo_pair
+ImportError: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+Traceback (most recent call last):
+  File "/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/generate_final_results_simple.py", line 79, in process_with_pipeline
+    from pothole_volume_pipeline import process_stereo_pair
+ImportError: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+
+============================================================
+FINAL PRESENTATION RESULTS GENERATOR
+============================================================
+
+============================================================
+Processing: Regular Example 1 - Standard Pothole
+============================================================
+✗ Error: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+
+============================================================
+Processing: Regular Example 2 - Large Anomaly
+============================================================
+✗ Error: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+
+============================================================
+Processing: Edge Case 1 - Night Time (Low Light)
+============================================================
+✗ Error: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+
+============================================================
+Processing: Edge Case 2 - Night Time with Noise
+============================================================
+✗ Error: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+
+============================================================
+Processing: Edge Case 3 - Extreme Shadows
+============================================================
+✗ Error: cannot import name 'process_stereo_pair' from 'pothole_volume_pipeline' (/Users/keerthivasan/Documents/GitHub/volumetric-reconstruction-of-road-anomalies-/pothole_volume_pipeline.py)
+
+============================================================
+✓ GENERATION COMPLETE!
+✓ Results saved to: final_presentation_results
+============================================================

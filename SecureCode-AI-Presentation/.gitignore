@@ -1,0 +1,22 @@
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
+*.zip
+
+# Repository text files (contain sensitive data)
+keerthivasan-venkitajalam-secure-code-ai-8a5edab282632443.txt

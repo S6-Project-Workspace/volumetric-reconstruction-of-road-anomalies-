@@ -1,0 +1,87 @@
+{
+  "geometric_accuracy": {
+    "depth_rmse_mm": {
+      "description": "Root Mean Square Error of depth measurements",
+      "target_value": "<5mm at 5m distance",
+      "measurement_method": "Compare with LiDAR ground truth"
+    },
+    "lateral_accuracy_mm": {
+      "description": "Lateral position accuracy in world coordinates",
+      "target_value": "<10mm at 5m distance",
+      "measurement_method": "Known target positioning"
+    },
+    "angular_accuracy_degrees": {
+      "description": "Angular measurement accuracy for surface normals",
+      "target_value": "<2 degrees",
+      "measurement_method": "Calibrated plane targets"
+    }
+  },
+  "volume_measurement": {
+    "volume_error_percent": {
+      "description": "Relative error in volume measurements",
+      "target_value": "<5% for volumes >1 liter",
+      "measurement_method": "Known volume containers"
+    },
+    "volume_repeatability_percent": {
+      "description": "Measurement repeatability (standard deviation)",
+      "target_value": "<2% coefficient of variation",
+      "measurement_method": "Multiple measurements of same object"
+    },
+    "minimum_detectable_volume_ml": {
+      "description": "Smallest reliably detectable volume",
+      "target_value": "<100ml at 5m distance",
+      "measurement_method": "Calibrated volume targets"
+    }
+  },
+  "reconstruction_completeness": {
+    "point_density_per_m2": {
+      "description": "3D point density in reconstructed surfaces",
+      "target_value": ">1000 points/m\u00b2 at 5m distance",
+      "measurement_method": "Point cloud analysis"
+    },
+    "surface_coverage_percent": {
+      "description": "Percentage of surface successfully reconstructed",
+      "target_value": ">95% for textured surfaces",
+      "measurement_method": "Comparison with reference mesh"
+    },
+    "hole_detection_rate": {
+      "description": "Fraction of actual holes correctly detected",
+      "target_value": ">90% for holes >20cm diameter",
+      "measurement_method": "Manual annotation validation"
+    }
+  },
+  "processing_performance": {
+    "processing_time_ms": {
+      "description": "Total processing time per stereo pair",
+      "target_value": "<200ms on standard hardware",
+      "measurement_method": "Benchmark timing"
+    },
+    "memory_usage_mb": {
+      "description": "Peak memory usage during processing",
+      "target_value": "<2GB for 1241\u00d7376 images",
+      "measurement_method": "System monitoring"
+    },
+    "throughput_fps": {
+      "description": "Processing throughput in frames per second",
+      "target_value": ">5 FPS continuous processing",
+      "measurement_method": "Sustained processing test"
+    }
+  },
+  "robustness": {
+    "lighting_invariance": {
+      "description": "Performance under different lighting conditions",
+      "target_value": "<10% accuracy degradation",
+      "measurement_method": "Controlled lighting experiments"
+    },
+    "texture_robustness": {
+      "description": "Performance on low-texture surfaces",
+      "target_value": ">80% coverage on asphalt",
+      "measurement_method": "Real road surface testing"
+    },
+    "distance_range_m": {
+      "description": "Effective operating distance range",
+      "target_value": "1m to 20m with <5% accuracy loss",
+      "measurement_method": "Distance-varied calibration targets"
+    }
+  }
+}

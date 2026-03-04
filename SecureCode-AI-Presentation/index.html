@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureCodeAI - Neuro-Symbolic Vulnerability Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <canvas id="neuro-bg"></canvas>
+
+    <div class="vignette"></div>
+
+    <div class="scanlines"></div>
+
+    <nav id="sidebar">
+        <div class="chapter-item active" data-slide="0">01. Title</div>
+        <div class="chapter-item" data-slide="1">02. Research Gap</div>
+        <div class="chapter-item" data-slide="2">03. Objective</div>
+        <div class="chapter-item" data-slide="3">04. Literature</div>
+        <div class="chapter-item" data-slide="4">05. System Arch</div>
+        <div class="chapter-item" data-slide="5">06. Benchmarks</div>
+        <div class="chapter-item" data-slide="6">07. Footprint</div>
+        <div class="chapter-item" data-slide="7">08. Methodology</div>
+        <div class="chapter-item" data-slide="8">09. Tech Stack</div>
+        <div class="chapter-item" data-slide="9">10. Novelty</div>
+        <div class="chapter-item" data-slide="10">11. Extension</div>
+        <div class="chapter-item" data-slide="11">12. Demo</div>
+        <div class="chapter-item" data-slide="12">13. Impact</div>
+    </nav>
+
+    <div id="main-container">
+        <div id="slides-wrapper">
+
+            <section class="slide slide-0">
+                <h3 class="accent-text-purple animate-in">Software Engineering Course [22AIE311]</h3>
+                <h1 class="animate-in delay-1">SecureCodeAI</h1>
+                <p class="animate-in delay-2" style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: #888;">Neuro-Symbolic
+                    Framework for Autonomous Vulnerability Detection</p>
+                <div class="focal-separator bg-purple animate-in delay-2"></div>
+
+                <div class="team-info animate-in delay-3">
+                    <h3 class="team-name accent-text-cyan">Team: Ctrl+Alt+Create</h3>
+                    <div class="team-members">
+                        <div class="member">Ansh Raj Rath — CB.SC.U4AIE23006</div>
+                        <div class="member">Aditya Krishna Samant — CB.SC.U4AIE23012</div>
+                        <div class="member">Keerthivasan S V — CB.SC.U4AIE23037</div>
+                        <div class="member">Krish S — CB.SC.U4AIE23040</div>
+                        <div class="member">Tamarana Rohith Balaji — CB.SC.U4AIE23069</div>
+                    </div>
+                </div>
+
+                <p class="animate-in delay-3" style="margin-top: 3rem; color: #666; font-size: 0.9rem;">Software
+                    Engineering Review • January 2026</p>
+                <p class="animate-in delay-3" style="margin-top: 1rem; color: #555; font-size: 0.85rem;">
+                    <span style="color: var(--accent-cyan);">▸</span> Production-ready API • Docker & RunPod deployment • VS Code Extension
+                </p>
+            </section>
+
+            <section class="slide slide-1">
+                <h2 class="accent-text-magenta animate-in">The Research Gap</h2>
+                <div class="focal-separator bg-magenta animate-in delay-1"></div>
+
+                <div class="gap-content animate-in delay-2">
+                    <div class="gap-item">
+                        <h3 class="accent-text-magenta">1. The SAST Flood (Low Precision)</h3>
+                        <p>Traditional tools (Bandit, SonarQube) prioritize recall over precision. They lack semantic
+                            understanding, flooding developers with >40% false positives and causing "alert fatigue."
+                        </p>
+                    </div>
+
+                    <div class="gap-item">
+                        <h3 class="accent-text-cyan">2. The LLM Hallucination</h3>
+                        <p>Pure Generative AI models have high semantic understanding but lack logic. They often invent
+                            bugs that don't exist or suggest "fixes" that introduce new vulnerabilities.</p>
+                    </div>
+
+                    <div class="gap-item">
+                        <h3 class="accent-text-lime">3. The Missing "Filter"</h3>
+                        <p>No existing system effectively acts as a filter between intuition and fact. The industry
+                            lacks a
+                            tool that uses AI to find bugs and Math to prove them.</p>
+                    </div>
+
+                    <div class="gap-item">
+                        <h3 class="accent-text-amber">4. Manual Triage Bottleneck</h3>
+                        <p>Fixing a bug in production costs ~100x more than in development. Current workflows rely on
+                            expensive human experts to verify every automated alert.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide slide-2">
+                <h2 class="accent-text-cyan animate-in">Research Objective</h2>
+                <div class="focal-separator bg-cyan animate-in delay-1"></div>
+
+                <div class="objective-content animate-in delay-2">
+                    <div class="objective-box">
+                        <h3>Core Problem Statement</h3>
+                        <p>Develop a neuro-symbolic framework combining LLM reasoning with formal verification:</p>
+                        <ul class="ul-styled">
+                            <li><strong class="accent-text-cyan">Reduced False Positives:</strong> Semantic
+                                understanding to filter noise</li>
+                            <li><strong class="accent-text-cyan">Scalable Symbolic Execution:</strong> LLM-guided
+                                slicing to mitigate path explosion</li>
+                            <li><strong class="accent-text-cyan">Automated Remediation:</strong> Self-correcting patch
+                                generation with verification</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box-large">
+                        <h3 class="accent-text-purple">Key Innovation</h3>
+                        <p style="font-size: 1.1rem;">
+                            <strong>Neuro-Slicing:</strong> First system to combine LLM-guided program slicing with
+                            SMT-based symbolic execution, reducing verification time by 50-80% while maintaining
+                            mathematical proof guarantees.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide slide-3">
+                <h2 class="accent-text-purple animate-in">Literature Review</h2>
+                <div class="focal-separator bg-purple animate-in delay-1"></div>
+
+                <div class="literature-wrapper animate-in delay-2">
+                    <table class="literature-table">
+                        <thead>
+                            <tr>
+                                <th>Study & Year</th>
+                                <th>Core Idea</th>
+                                <th>Strength</th>
+                                <th>Limitation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Zhang et al. (2024)</td>
+                                <td>Systematic literature review of LLM use in Automated Program Repair (2020–2024).</td>
+                                <td>Taxonomizes prompting, retrieval-augmented, and fine-tuning APR strategies.</td>
+                                <td>Identifies need for symbolic verification to prevent hallucinated security patches.</td>
+                            </tr>
+                            <tr>
+                                <td>LLM & Code Security SLR (2024)</td>
+                                <td>Systematic review of LLMs for vulnerability detection and remediation.</td>
+                                <td>Benchmarks detection/repair quality across PySecDB, CyberSecEval, SWE-bench.</td>
+                                <td>Finds persistent false positives and unverifiable patches without semantics.</td>
+                            </tr>
+                            <tr>
+                                <td>Neuro-Symbolic AI Survey (2024)</td>
+                                <td>Maps hybrid reasoning stacks combining neural intuition and symbolic proof.</td>
+                                <td>Highlights verification loops, contract synthesis, and explainability gains.</td>
+                                <td>Notes execution bottlenecks without targeted slicing or solver guidance.</td>
+                            </tr>
+                            <tr>
+                                <td>De-Fitero-Dominguez et al. (2024)</td>
+                                <td>Empirical study on LLM-guided vulnerability repair workflows.</td>
+                                <td>Shows improved precision using iterative prompts and risk scoring.</td>
+                                <td>Still struggles to guarantee correctness without external verification.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="slide slide-4">
+                <div class="diagram-container animate-in">
+                    <img src="sys-arc.png" alt="SecureCodeAI System Architecture" class="diagram-img">
+                </div>
+                <p class="animate-in delay-2" style="color: #666; margin-top: 1rem; font-size: 0.9rem;">
+                    Full Stack Overview: Client Layer → Gateway → Agent Swarm → AI Inference
+                </p>
+            </section>
+
+            <section class="slide slide-5">
+                <h2 class="accent-text-cyan animate-in">Performance Benchmarks</h2>
+                <div class="focal-separator bg-cyan animate-in delay-1"></div>
+
+                <div class="chart-container animate-in delay-2">
+                    <img src="assets/performance_benchmarks.png" alt="SecureCodeAI Performance Benchmarks" class="chart-img">
+                </div>
+                <p class="animate-in delay-3" style="color: #888; margin-top: 1rem; font-size: 0.95rem;">
+                    Achieves 1.2 req/s throughput with p50 latency of 1.8s and 97% success rate—exceeding production targets.
+                </p>
+            </section>
+
+            <section class="slide slide-6">
+                <h2 class="accent-text-magenta animate-in">Deployment Footprint</h2>
+                <div class="focal-separator bg-magenta animate-in delay-1"></div>
+
+                <div class="chart-container animate-in delay-2">
+                    <img src="assets/resource_requirements.png" alt="SecureCodeAI Resource Requirements" class="chart-img">
+                </div>
+                <p class="animate-in delay-3" style="color: #888; margin-top: 1rem; font-size: 0.95rem;">
+                    Scales from 8GB dev environments to serverless GPU clusters (RunPod/Docker) with zero refactoring.
+                </p>
+            </section>
+
+            <section class="slide slide-7">
+                <h2 class="accent-text-lime animate-in">Methodology</h2>
+                <div class="focal-separator bg-lime animate-in delay-1"></div>
+
+                <div class="methodology-grid animate-in delay-2">
+                    <div class="phase-card phase-1">
+                        <div class="phase-number">01</div>
+                        <h3>Scanner Agent</h3>
+                        <p class="agent-role">The Detective</p>
+                        <div class="phase-steps">
+                            <div class="step">AST Parsing</div>
+                            <div class="step">Bandit SAST Scan</div>
+                            <div class="step">LLM Hypothesis</div>
+                        </div>
+                        <div class="phase-output">→ Vulnerability Candidates</div>
+                    </div>
+
+                    <div class="phase-card phase-2">
+                        <div class="phase-number">02</div>
+                        <h3>Speculator Agent</h3>
+                        <p class="agent-role">The Lawyer</p>
+                        <div class="phase-steps">
+                            <div class="step">Contract Synthesis</div>
+                            <div class="step">icontract Decorators</div>
+                            <div class="step">Spec Validation</div>
+                        </div>
+                        <div class="phase-output">→ Formal Contracts</div>
+                    </div>
+
+                    <div class="phase-card phase-3">
+                        <div class="phase-number">03</div>
+                        <h3>SymBot Agent</h3>
+                        <p class="agent-role">The Judge</p>
+                        <div class="phase-steps">
+                            <div class="step">CrossHair Engine</div>
+                            <div class="step">Symbolic Execution</div>
+                            <div class="step">Z3 SMT Solver</div>
+                        </div>
+                        <div class="phase-output">→ Counterexample / Proof</div>
+                    </div>
+
+                    <div class="phase-card phase-4">
+                        <div class="phase-number">04</div>
+                        <h3>Patcher Agent</h3>
+                        <p class="agent-role">The Surgeon</p>
+                        <div class="phase-steps">
+                            <div class="step">Patch Generation</div>
+                            <div class="step">Self-Correction Loop</div>
+                            <div class="step">Re-verification</div>
+                        </div>
+                        <div class="phase-output">→ Verified Patch (max 3 iterations)</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide slide-8">
+                <h2 class="accent-text-amber animate-in">Technology Stack</h2>
+                <div class="focal-separator bg-amber animate-in delay-1"></div>
+
+                <div class="tech-stack-grid animate-in delay-2">
+                    <div class="tech-category">
+                        <h3 class="accent-text-cyan">LLM Inference Layer</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <span class="tech-label">Cloud:</span>
+                                <span class="tech-value">Gemini 2.5 Flash</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Local:</span>
+                                <span class="tech-value">DeepSeek-Coder-V2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3 class="accent-text-magenta">Symbolic Execution</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <span class="tech-label">Engine:</span>
+                                <span class="tech-value">CrossHair</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">SMT Solver:</span>
+                                <span class="tech-value">Z3 Theorem Prover</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3 class="accent-text-lime">Static Analysis</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <span class="tech-label">SAST:</span>
+                                <span class="tech-value">Bandit</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Parser:</span>
+                                <span class="tech-value">Python AST</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3 class="accent-text-purple">Orchestration</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <span class="tech-label">Flow:</span>
+                                <span class="tech-value">LangGraph State Machine</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">API:</span>
+                                <span class="tech-value">FastAPI + Uvicorn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="supported-vulns animate-in delay-3">
+                    <h3>Supported Vulnerability Classes</h3>
+                    <div class="vuln-badges">
+                        <span class="vuln-badge">SQL Injection</span>
+                        <span class="vuln-badge">Command Injection</span>
+                        <span class="vuln-badge">Path Traversal</span>
+                        <span class="vuln-badge">XSS</span>
+                        <span class="vuln-badge">Hardcoded Credentials</span>
+                        <span class="vuln-badge">Insecure Deserialization</span>
+                        <span class="vuln-badge">SSRF</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide slide-9">
+                <h2 class="accent-text-amber animate-in">Primary Innovation: Neuro-Slicing</h2>
+                <div class="focal-separator bg-amber animate-in delay-1"></div>
+
+                <div class="novelty-grid animate-in delay-2">
+                    <div class="novelty-section">
+                        <h3 class="accent-text-magenta">The Path Explosion Problem</h3>
+                        <div class="math-box-large">
+                            $$ \text{Paths} = 2^n, n = \text{branches} $$
+                        </div>
+                        <p class="problem-desc">
+                            A typical 1000-line file with 50 conditional branches generates 2<sup>50</sup> paths, making
+                            exhaustive execution impossible.
+                        </p>
+                    </div>
+
+                    <div class="novelty-section">
+                        <h3 class="accent-text-cyan">Neuro-Slicing Algorithm</h3>
+                        <div class="algorithm-steps">
+                            <div class="algo-step">
+                                <span class="step-num">1</span>
+                                <span class="step-desc">AST Parse → Vulnerable Function</span>
+                            </div>
+                            <div class="algo-step">
+                                <span class="step-num">2</span>
+                                <span class="step-desc">Taint Analysis → User Variables</span>
+                            </div>
+                            <div class="algo-step">
+                                <span class="step-num">3</span>
+                                <span class="step-desc">Backward Slicing → Dependencies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="performance-comparison animate-in delay-3">
+                    <h3>Performance Impact</h3>
+                    <table class="perf-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Without</th>
+                                <th>With Slicing</th>
+                                <th>Improvement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Code Size</td>
+                                <td>500 lines</td>
+                                <td>50 lines</td>
+                                <td class="accent-text-lime">90% less</td>
+                            </tr>
+                            <tr>
+                                <td>Exec Time</td>
+                                <td>45s</td>
+                                <td>1.8s</td>
+                                <td class="accent-text-purple">96% faster</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="slide slide-10">
+                <h2 class="accent-text-cyan animate-in">VS Code Extension</h2>
+                <div class="focal-separator bg-cyan animate-in delay-1"></div>
+
+                <div class="chart-container animate-in delay-2">
+                    <img src="ext.png" alt="SecureCodeAI VS Code Extension" class="chart-img">
+                </div>
+                <p class="animate-in delay-3" style="color: #888; margin-top: 1rem; font-size: 0.95rem;">
+                    Real-time vulnerability detection in the IDE—inline diagnostics, one-click patches, and workspace scanning.
+                </p>
+            </section>
+
+            <section class="slide slide-11">
+                <h2 class="accent-text-lime animate-in">Live Demo</h2>
+                <div class="focal-separator bg-lime animate-in delay-1"></div>
+
+                <div class="video-container animate-in delay-2">
+                    <iframe src="https://www.youtube.com/embed/k9MeVbcm4rc" 
+                            title="SecureCodeAI Demo" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="slide slide-12">
+                <h2 class="accent-text-purple animate-in">Business Impact & Market</h2>
+                <div class="focal-separator bg-purple animate-in delay-1"></div>
+
+                <div class="impact-grid animate-in delay-2">
+                    <div class="impact-card">
+                        <h3 class="accent-text-cyan">Market Opportunity</h3>
+                        <div class="metric-large">$22.54B</div>
+                        <p>Global Application Security market by 2028. DevSecOps shift drives demand for automated, high-precision vulnerability detection.</p>
+                    </div>
+
+                    <div class="impact-card">
+                        <h3 class="accent-text-magenta">ROI Advantage</h3>
+                        <div class="metric-large">100x</div>
+                        <p>Production bug fixes cost 100× more than development-phase fixes. SecureCodeAI catches vulnerabilities in the IDE before deployment.</p>
+                    </div>
+
+                    <div class="impact-card">
+                        <h3 class="accent-text-lime">Competitive Edge</h3>
+                        <div class="metric-large">Near-Zero FP</div>
+                        <p>Traditional SAST tools flood teams with >40% false positives. Our neuro-symbolic approach provides mathematical proof—no alert fatigue.</p>
+                    </div>
+
+                    <div class="impact-card">
+                        <h3 class="accent-text-amber">Target Segments</h3>
+                        <ul class="target-list">
+                            <li>DevSecOps teams automating triage workflows</li>
+                            <li>SMBs lacking dedicated security staff</li>
+                            <li>CI/CD pipelines requiring verified exploit blocks</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -3,13 +3,13 @@
   "disparity": {
     "min": 1.0,
     "max": 96.0,
-    "mean": 18.59526824951172
+    "mean": 19.877456665039062
   },
   "point_cloud": {
-    "num_points": 3792,
+    "num_points": 3092,
     "depth_range": [
       1.0,
-      17.230770111083984
+      48.0
     ]
   },
   "ground_plane_detected": true,

@@ -1,0 +1,196 @@
+{
+  "charuco_corners_detected": 24,
+  "disparity_metrics": {
+    "processing_time_seconds": 0.034520864486694336,
+    "valid_pixels_raw": 406330,
+    "valid_pixels_after_lrc": 797,
+    "valid_pixels_after_wls": 797,
+    "lrc_error_rate_percent": 99.80385401028721,
+    "disparity_range": {
+      "min": 0.0,
+      "max": 1026.0,
+      "mean": 1.5850142301164127
+    }
+  },
+  "3d_reconstruction_stats": {
+    "min_depth_m": 2.0014064070610424,
+    "max_depth_m": 14.984382294166872,
+    "mean_depth_m": 5.990754420409042,
+    "std_depth_m": 2.574688571783493,
+    "total_3d_points": 5000,
+    "depth_resolution_cm": 9.01388977255271,
+    "lateral_resolution_cm": 0.8303193929880861
+  },
+  "accuracy_analysis": {
+    "depth_accuracy_mm_at_5m": 6.41667308333975,
+    "lateral_resolution_mm_per_pixel_at_5m": 6.93000693000693,
+    "volume_error_percent_20cm_pothole": 14.584915833962548,
+    "volume_error_percent_50cm_pothole": 5.097393322362005,
+    "theoretical_baseline_m": 0.54,
+    "theoretical_focal_length_px": 721.5
+  },
+  "calibration_quality": {
+    "is_valid": true,
+    "errors": [],
+    "warnings": [],
+    "quality_score": 100.0,
+    "metrics": {
+      "baseline": 0.54,
+      "rotation_determinant": "1.0",
+      "rotation_angle_degrees": "0.0",
+      "focal_length_from_Q": "721.5",
+      "baseline_from_Q": "0.54"
+    }
+  },
+  "evaluation_framework": {
+    "geometric_accuracy": {
+      "depth_rmse_mm": {
+        "description": "Root Mean Square Error of depth measurements",
+        "target_value": "<5mm at 5m distance",
+        "measurement_method": "Compare with LiDAR ground truth"
+      },
+      "lateral_accuracy_mm": {
+        "description": "Lateral position accuracy in world coordinates",
+        "target_value": "<10mm at 5m distance",
+        "measurement_method": "Known target positioning"
+      },
+      "angular_accuracy_degrees": {
+        "description": "Angular measurement accuracy for surface normals",
+        "target_value": "<2 degrees",
+        "measurement_method": "Calibrated plane targets"
+      }
+    },
+    "volume_measurement": {
+      "volume_error_percent": {
+        "description": "Relative error in volume measurements",
+        "target_value": "<5% for volumes >1 liter",
+        "measurement_method": "Known volume containers"
+      },
+      "volume_repeatability_percent": {
+        "description": "Measurement repeatability (standard deviation)",
+        "target_value": "<2% coefficient of variation",
+        "measurement_method": "Multiple measurements of same object"
+      },
+      "minimum_detectable_volume_ml": {
+        "description": "Smallest reliably detectable volume",
+        "target_value": "<100ml at 5m distance",
+        "measurement_method": "Calibrated volume targets"
+      }
+    },
+    "reconstruction_completeness": {
+      "point_density_per_m2": {
+        "description": "3D point density in reconstructed surfaces",
+        "target_value": ">1000 points/m\u00b2 at 5m distance",
+        "measurement_method": "Point cloud analysis"
+      },
+      "surface_coverage_percent": {
+        "description": "Percentage of surface successfully reconstructed",
+        "target_value": ">95% for textured surfaces",
+        "measurement_method": "Comparison with reference mesh"
+      },
+      "hole_detection_rate": {
+        "description": "Fraction of actual holes correctly detected",
+        "target_value": ">90% for holes >20cm diameter",
+        "measurement_method": "Manual annotation validation"
+      }
+    },
+    "processing_performance": {
+      "processing_time_ms": {
+        "description": "Total processing time per stereo pair",
+        "target_value": "<200ms on standard hardware",
+        "measurement_method": "Benchmark timing"
+      },
+      "memory_usage_mb": {
+        "description": "Peak memory usage during processing",
+        "target_value": "<2GB for 1241\u00d7376 images",
+        "measurement_method": "System monitoring"
+      },
+      "throughput_fps": {
+        "description": "Processing throughput in frames per second",
+        "target_value": ">5 FPS continuous processing",
+        "measurement_method": "Sustained processing test"
+      }
+    },
+    "robustness": {
+      "lighting_invariance": {
+        "description": "Performance under different lighting conditions",
+        "target_value": "<10% accuracy degradation",
+        "measurement_method": "Controlled lighting experiments"
+      },
+      "texture_robustness": {
+        "description": "Performance on low-texture surfaces",
+        "target_value": ">80% coverage on asphalt",
+        "measurement_method": "Real road surface testing"
+      },
+      "distance_range_m": {
+        "description": "Effective operating distance range",
+        "target_value": "1m to 20m with <5% accuracy loss",
+        "measurement_method": "Distance-varied calibration targets"
+      }
+    }
+  },
+  "hardware_specifications": {
+    "camera_system": {
+      "sensor_type": "CMOS",
+      "resolution": "1241\u00d7376 pixels",
+      "pixel_size_um": 5.5,
+      "focal_length_mm": 35,
+      "focal_length_pixels": 721.5,
+      "field_of_view_degrees": {
+        "horizontal": 45,
+        "vertical": 15
+      },
+      "baseline_m": 0.54,
+      "baseline_tolerance_mm": 0.1,
+      "synchronization": "Hardware trigger",
+      "frame_rate_hz": 30,
+      "exposure_range_ms": [
+        0.1,
+        50
+      ],
+      "gain_range_db": [
+        0,
+        24
+      ]
+    },
+    "calibration_setup": {
+      "calibration_target": "CharuCo board 7\u00d75",
+      "square_size_mm": 40,
+      "marker_size_mm": 20,
+      "calibration_distance_range_m": [
+        1.0,
+        8.0
+      ],
+      "number_of_poses": 25,
+      "pose_variation_degrees": 45,
+      "target_reprojection_error_pixels": 0.1
+    },
+    "processing_hardware": {
+      "cpu": "Intel i7-8700K or equivalent",
+      "ram_gb": 16,
+      "gpu": "NVIDIA GTX 1060 or better (optional)",
+      "storage_gb": 100,
+      "operating_system": "Ubuntu 20.04 LTS or Windows 10"
+    },
+    "environmental_specifications": {
+      "operating_temperature_celsius": [
+        -10,
+        50
+      ],
+      "humidity_percent": [
+        10,
+        90
+      ],
+      "vibration_resistance": "Road vehicle compatible",
+      "ip_rating": "IP65 (dust and water resistant)",
+      "mounting": "Vehicle roof or dashboard"
+    }
+  },
+  "generation_timestamp": "2026-01-18T22:01:38.216552",
+  "summary": {
+    "total_files_generated": 11,
+    "calibration_quality_score": 100.0,
+    "expected_depth_accuracy_mm": 6.41667308333975,
+    "expected_volume_error_percent": 14.584915833962548
+  }
+}

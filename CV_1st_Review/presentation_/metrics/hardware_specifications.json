@@ -1,0 +1,57 @@
+{
+  "camera_system": {
+    "sensor_type": "CMOS",
+    "resolution": "1241\u00d7376 pixels",
+    "pixel_size_um": 5.5,
+    "focal_length_mm": 35,
+    "focal_length_pixels": 721.5,
+    "field_of_view_degrees": {
+      "horizontal": 45,
+      "vertical": 15
+    },
+    "baseline_m": 0.54,
+    "baseline_tolerance_mm": 0.1,
+    "synchronization": "Hardware trigger",
+    "frame_rate_hz": 30,
+    "exposure_range_ms": [
+      0.1,
+      50
+    ],
+    "gain_range_db": [
+      0,
+      24
+    ]
+  },
+  "calibration_setup": {
+    "calibration_target": "CharuCo board 7\u00d75",
+    "square_size_mm": 40,
+    "marker_size_mm": 20,
+    "calibration_distance_range_m": [
+      1.0,
+      8.0
+    ],
+    "number_of_poses": 25,
+    "pose_variation_degrees": 45,
+    "target_reprojection_error_pixels": 0.1
+  },
+  "processing_hardware": {
+    "cpu": "Intel i7-8700K or equivalent",
+    "ram_gb": 16,
+    "gpu": "NVIDIA GTX 1060 or better (optional)",
+    "storage_gb": 100,
+    "operating_system": "Ubuntu 20.04 LTS or Windows 10"
+  },
+  "environmental_specifications": {
+    "operating_temperature_celsius": [
+      -10,
+      50
+    ],
+    "humidity_percent": [
+      10,
+      90
+    ],
+    "vibration_resistance": "Road vehicle compatible",
+    "ip_rating": "IP65 (dust and water resistant)",
+    "mounting": "Vehicle roof or dashboard"
+  }
+}
