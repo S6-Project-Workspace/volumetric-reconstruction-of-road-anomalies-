@@ -1,0 +1,147 @@
+{
+  "description": "Edge Case 3 - Extreme Shadows",
+  "disparity": {
+    "min": 1.0,
+    "max": 96.0,
+    "mean": 4.969119071960449
+  },
+  "point_cloud": {
+    "num_points": 9375,
+    "depth_range": [
+      1.0007445812225342,
+      49.77777862548828
+    ]
+  },
+  "ground_plane_detected": true,
+  "num_anomalies": 16,
+  "anomalies": [
+    {
+      "type": "pothole",
+      "volume_m3": "12.487845",
+      "volume_liters": "12487.846",
+      "volume_cm3": "12487845.0",
+      "area_m2": 2.992613522389704,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 20.05199276599289,
+      "volume_liters": 20051.992765992887,
+      "volume_cm3": 20051992.765992887,
+      "area_m2": 3.8459903328213367,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 52.75908045067349,
+      "volume_liters": 52759.080450673486,
+      "volume_cm3": 52759080.45067348,
+      "area_m2": 11.347182741340871,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": "94.07715",
+      "volume_liters": "94077.15",
+      "volume_cm3": "94077150.0",
+      "area_m2": 34.2010508226631,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 0.004702092571733659,
+      "volume_liters": 4.702092571733659,
+      "volume_cm3": 4702.0925717336595,
+      "area_m2": 0.07934661051694993,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": "94.7741",
+      "volume_liters": "94774.1",
+      "volume_cm3": "94774104.0",
+      "area_m2": 53.74763621688908,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 0.01694893410047161,
+      "volume_liters": 16.948934100471607,
+      "volume_cm3": 16948.934100471608,
+      "area_m2": 0.2689081081916821,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 0.20470370572045551,
+      "volume_liters": 204.7037057204555,
+      "volume_cm3": 204703.7057204555,
+      "area_m2": 0.7033159219449776,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 0.027980430503451243,
+      "volume_liters": 27.98043050345124,
+      "volume_cm3": 27980.430503451244,
+      "area_m2": 0.277463008162158,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 5.620076590953772e-07,
+      "volume_liters": 0.0005620076590953772,
+      "volume_cm3": 0.5620076590953772,
+      "area_m2": 0.5446990431773973,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 1.317904010873202e-06,
+      "volume_liters": 0.001317904010873202,
+      "volume_cm3": 1.317904010873202,
+      "area_m2": 0.00034977011818071555,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 148.3348976245775,
+      "volume_liters": 148334.8976245775,
+      "volume_cm3": 148334897.62457752,
+      "area_m2": 38.24191130764848,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 0.001124208271868498,
+      "volume_liters": 1.124208271868498,
+      "volume_cm3": 1124.208271868498,
+      "area_m2": 0.021681289654587477,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 0.0470784006658163,
+      "volume_liters": 47.0784006658163,
+      "volume_cm3": 47078.4006658163,
+      "area_m2": 0.8554657498316337,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 14.20382521421836,
+      "volume_liters": 14203.825214218361,
+      "volume_cm3": 14203825.214218361,
+      "area_m2": 11.663657127413915,
+      "is_valid": false
+    },
+    {
+      "type": "pothole",
+      "volume_m3": 1.0560601686683682,
+      "volume_liters": 1056.060168668368,
+      "volume_cm3": 1056060.1686683681,
+      "area_m2": 6.178516080079139,
+      "is_valid": true
+    }
+  ]
+}

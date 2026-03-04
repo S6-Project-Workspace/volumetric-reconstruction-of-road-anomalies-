@@ -1,0 +1,27 @@
+{
+  "description": "Edge Case 1 - Night Time (Low Light)",
+  "disparity": {
+    "min": 1.0,
+    "max": 96.0,
+    "mean": 21.376638412475586
+  },
+  "point_cloud": {
+    "num_points": 5567,
+    "depth_range": [
+      1.0,
+      19.478261947631836
+    ]
+  },
+  "ground_plane_detected": true,
+  "num_anomalies": 1,
+  "anomalies": [
+    {
+      "type": "pothole",
+      "volume_m3": 1.219509299782708e-05,
+      "volume_liters": 0.012195092997827079,
+      "volume_cm3": 12.19509299782708,
+      "area_m2": 0.0002791085741553624,
+      "is_valid": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "description": "Regular Example 1 - Standard Pothole",
+  "disparity": {
+    "min": 1.0,
+    "max": 96.0,
+    "mean": 16.39002227783203
+  },
+  "point_cloud": {
+    "num_points": 5954,
+    "depth_range": [
+      1.0,
+      48.0
+    ]
+  },
+  "ground_plane_detected": true,
+  "num_anomalies": 0
+}

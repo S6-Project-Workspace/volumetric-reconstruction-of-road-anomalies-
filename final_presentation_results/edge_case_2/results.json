@@ -1,0 +1,17 @@
+{
+  "description": "Edge Case 2 - Night Time with Noise",
+  "disparity": {
+    "min": 1.0,
+    "max": 96.0,
+    "mean": 18.59526824951172
+  },
+  "point_cloud": {
+    "num_points": 3792,
+    "depth_range": [
+      1.0,
+      17.230770111083984
+    ]
+  },
+  "ground_plane_detected": true,
+  "num_anomalies": 0
+}

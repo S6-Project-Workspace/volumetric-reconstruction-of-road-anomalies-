@@ -1,0 +1,35 @@
+{
+  "description": "Regular Example 2 - Large Anomaly",
+  "disparity": {
+    "min": 1.0,
+    "max": 96.0,
+    "mean": 19.457332611083984
+  },
+  "point_cloud": {
+    "num_points": 6738,
+    "depth_range": [
+      1.0007445812225342,
+      48.0
+    ]
+  },
+  "ground_plane_detected": true,
+  "num_anomalies": 2,
+  "anomalies": [
+    {
+      "type": "pothole",
+      "volume_m3": 0.0013949407632382132,
+      "volume_liters": 1.3949407632382131,
+      "volume_cm3": 1394.940763238213,
+      "area_m2": 0.1951749999998358,
+      "is_valid": true
+    },
+    {
+      "type": "pothole",
+      "volume_m3": "0.22386679",
+      "volume_liters": "223.86679",
+      "volume_cm3": "223866.8",
+      "area_m2": 2.292687419681892,
+      "is_valid": true
+    }
+  ]
+}
